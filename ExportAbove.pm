@@ -3,7 +3,7 @@ package ExportAbove;
 use strict;
 use vars qw($VERSION);
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 my %Already;
 
@@ -89,7 +89,6 @@ ExportAbove - set sub or var names into @EXPORT* automatically
 
   package SomeModule;
   use Exporter;
-  use vars qw(@ISA);
   @ISA = qw(Exporter);
   
   $qux = ...;            # NOT export
@@ -110,13 +109,18 @@ ExportAbove - set sub or var names into @EXPORT* automatically
 
 =head1 DESCRIPTION
 
+ExportAbove is a helper module for Exporter.
+
 ExportAbove sets your module's subroutine or variable (scalar, array or hash) 
 names into @EXPORT, @EXPORT_OK or %EXPORT_TAGS automatically. You do not have 
-to write '@EXPORT = qw(...);' and so on. You need only a 'use ExportAbove...;' 
-line below the subroutine or variable definitions you want to export. You do 
-not have to write same subroutine or variable names twice at 
-'@EXPORT = qw(...);' and its definitions. If you want to change that names, 
-you simply change only its definitions.
+to write '@EXPORT = qw(...);' and so on. Instead write 'use ExportAbove;' 
+below the subroutine or variable definitions you want to export. 
+
+You do not have to write same subroutine or variable names twice at 
+'@EXPORT = qw(...);' and its definition. It makes module maintenance easy. 
+If you want to change an exported names, you simply change only its 
+definitions. If you want to move an exported subroutine or variable to 
+another related module, simply do it.
 
 =head2 Set into @EXPORT
 
